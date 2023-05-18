@@ -94,6 +94,18 @@ subgraph cluster_1322970774 {
 <TR><TD ALIGN="LEFT" >(C)Animal</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >#   speed: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Cheetah1526836320[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cheetah</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -114,6 +126,16 @@ Food1526836320[
 Hunter1526836320[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)Hunter</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Lion1526836320[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Lion</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -155,12 +177,25 @@ SimElement1526836320[
 	shape=plaintext
 	fillcolor="#FFFFFF"
 ];
+
+Zebra1526836320[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Zebra</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
 } 
 
 'edges    
 Animal1526836320 -> Hunter1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Animal1526836320 -> Prey1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Hunter1526836320 -> Cheetah1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Hunter1526836320 -> Lion1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Main1526836320 -> SimElement1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Prey1526836320 -> Zebra1526836320[arrowhead=none, arrowtail=empty, dir=both];
 SimElement1526836320 -> Animal1526836320[arrowhead=none, arrowtail=empty, dir=both];
 SimElement1526836320 -> Food1526836320[arrowhead=none, arrowtail=empty, dir=both];
     
