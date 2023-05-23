@@ -2,9 +2,8 @@ package org.example;
 
 public class Hunter extends Animal {
 
-    public int hunger;
-    public Hunter(int row, int col, int speed){
+    public Hunter(int row, int col, char symbol){
 
-        super(row, col, speed);
+        super(row, col, symbol);
     }
 }

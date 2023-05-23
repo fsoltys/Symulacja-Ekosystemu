@@ -1,11 +1,12 @@
 package org.example;
 
 public class Animal extends SimElement{
-    int speed;
-    public Animal(int col, int row, int speed){
+    private char symbol;
+    public Animal(int col, int row, char symbol){
         super(col, row);
     }
-    public void move(){
 
+    char getSymbol(){
+        return symbol;
     }
 }

@@ -1,9 +1,23 @@
 package org.example;
 
 public class SimElement extends Main {
-    int row, column;
+    private int x, y;
     public SimElement(){}
     public SimElement(int row, int column){
 
+    }
+
+    void setX(int x){
+        this.x = x;
+    }
+    void setY(int y){
+        this.y = y;
+    }
+
+    int getY(){
+        return y;
+    }
+    int getX(){
+        return x;
     }
 }
