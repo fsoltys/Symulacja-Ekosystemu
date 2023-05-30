@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,8 +31,8 @@ public class Board {
         }
     }
 
-    // Method to check if a position is valid on the board
-    private boolean isValidPosition(int x, int y) {
+    // Public method to check if a position is valid on the board
+    public boolean isValidPosition(int x, int y) {
         int width = cells.length;
         int height = cells[0].length;
 
