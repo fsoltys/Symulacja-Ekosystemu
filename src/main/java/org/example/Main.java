@@ -2,16 +2,49 @@ package org.example;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-            Board board = new Board(10,10);
-            Cheetah ch1 = new Cheetah(1, 1, 'd');
-            board.placeAnimal(ch1);
-            board.printBoard();
+        Board board = new Board(10, 10);
+
+        // Tworzenie obiektów zwierząt
+        Prey antelope = new Antelope(3, 4, 'A');
+        Prey zebra = new Zebra(5, 6, 'Z');
+        Hunter cheetah = new Cheetah(7, 8, 'C');
+        Hunter lion = new Lion(9, 9, 'L');
+
+        // Umieszczanie zwierząt na planszy
+        board.placeAnimal(antelope);
+        board.placeAnimal(zebra);
+        board.placeAnimal(cheetah);
+        board.placeAnimal(lion);
+
+        // Przed ruchem
+        System.out.println("Plansza przed ruchem:");
+        board.printBoard();
+
+        // Metoda move() dla wszystkich zwierząt
+        List<Animal> animals = board.getAnimals();
+        for (Animal animal : animals) {
+            if (animal instanceof Prey) {
+                Prey prey = (Prey) animal;
+                prey.move(board);
+            } else if (animal instanceof Hunter) {
+                Hunter hunter = (Hunter) animal;
+                hunter.move(board);
+            }
         }
+
+        // Aktualizacja
+        board.updateBoard();
+
+        // Po ruchu
+        System.out.println("Plansza po ruchu:");
+        board.printBoard();
+    }
+
         public static void toFile(){
 
     }
