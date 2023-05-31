@@ -46,6 +46,24 @@ public class Board {
 
     // Method to update the board state
     public void updateBoard() {
+        // Clear the board
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j] = 'O';
+            }
+        }
+
+        // Update the board with animal positions
+        for (Animal animal : animals) {
+            int x = animal.getX();
+            int y = animal.getY();
+
+            if (isValidPosition(x, y)) {
+                cells[x][y] = animal.getSymbol();
+            }
+        }
+
+        // Process hunter-prey interactions
         Iterator<Animal> iterator = animals.iterator();
         while (iterator.hasNext()) {
             Animal animal = iterator.next();
@@ -55,7 +73,7 @@ public class Board {
             if (animal instanceof Hunter) {
                 // Check if there is a prey at the same coordinates
                 for (Animal otherAnimal : animals) {
-                    if (otherAnimal instanceof Prey && otherAnimal.getX() == x && otherAnimal.getY() == y) {
+                    if (otherAnimal != animal && otherAnimal instanceof Prey && otherAnimal.getX() == x && otherAnimal.getY() == y) {
                         // Hunter eats the prey
                         iterator.remove();
                         cells[x][y] = animal.getSymbol();

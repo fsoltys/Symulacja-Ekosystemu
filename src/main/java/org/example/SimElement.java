@@ -4,7 +4,8 @@ public class SimElement extends Main {
     private int x, y;
     public SimElement(){}
     public SimElement(int row, int column){
-
+        x = column;
+        y = row;
     }
 
     void setX(int x){

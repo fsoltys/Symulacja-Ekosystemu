@@ -12,5 +12,19 @@ public abstract class Animal extends SimElement {
         return symbol;
     }
 
+
     public abstract void move(Board board);
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Animal other = (Animal) obj;
+        return getX() == other.getX() && getY() == other.getY();
+    }
 }
+
