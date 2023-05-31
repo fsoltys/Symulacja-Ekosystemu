@@ -12,13 +12,13 @@ public class Main {
         // Tworzenie obiektów zwierząt
         Prey antelope = new Antelope(3, 4, 'A');
         Prey zebra = new Zebra(5, 6, 'Z');
-        Hunter cheetah = new Cheetah(7, 8, 'C');
+        Hunter jackal = new Jackal(7, 8, 'J');
         Hunter lion = new Lion(9, 9, 'L');
 
         // Umieszczanie zwierząt na planszy
         board.placeAnimal(antelope);
         board.placeAnimal(zebra);
-        board.placeAnimal(cheetah);
+        board.placeAnimal(jackal);
         board.placeAnimal(lion);
 
         // Przed ruchem
