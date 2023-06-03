@@ -38,21 +38,22 @@ public class Main {
         int i = 0;
         while (i < 20) {
             for (Animal animal : board.getAnimals()) {
-                if (animal instanceof Prey prey) {
-                    prey.move(board);
-                }
-            }
-            for (Animal animal : board.getAnimals()) {
-                if (animal instanceof Hunter hunter) {
-                    hunter.move(board);
-                }
+                animal.move(board);
             }
             board.updateBoard();
+            System.out.println("\n");
+            board.printBoard();
             i++;
         }
-
+        int preyPopulation = 0;
+        int hunterPopulation = 0;
+        for(Animal animal: board.getAnimals()){
+           if(animal instanceof Prey){preyPopulation++;}
+           if(animal instanceof Hunter){hunterPopulation++;}
+        }
         // Po ruchu
-        System.out.println("Plansza po ruchu:");
         board.printBoard();
+        System.out.println("Plansza po ruchu:");
+        System.out.printf("Populacja po ruchu\nDrapiezniki: %d\nOfiary: %d", hunterPopulation, preyPopulation);
     }
 }

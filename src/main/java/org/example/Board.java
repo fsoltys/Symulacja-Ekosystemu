@@ -64,27 +64,30 @@ public class Board {
         }
 
         // Process hunter-prey interactions
-        Iterator<Animal> iterator = animals.iterator();
-        while (iterator.hasNext()) {
-            Animal animal = iterator.next();
+
+        for (int i = 0; i< animals.size(); ++i) {
+            Animal animal = animals.get(i);
             int x = animal.getX();
             int y = animal.getY();
 
             if (animal instanceof Hunter) {
                 // Check if there is a prey at the same coordinates
-                for (Animal otherAnimal : animals) {
+                for (int j = 0; j<animals.size(); ++j) {
+                    Animal otherAnimal = animals.get(j);
                     if (otherAnimal != animal && otherAnimal instanceof Prey && otherAnimal.getX() == x && otherAnimal.getY() == y) {
                         // Hunter eats the prey
-                        iterator.remove();
+                        animals.remove(otherAnimal);
+                        if(i > j){i--;}
                         cells[x][y] = animal.getSymbol();
                         System.out.println("Hunter ate the prey at (" + x + ", " + y + ")");
+                        j--;
                         break;
                     }
+
                 }
             }
         }
     }
-
     // Method to print the board
     public void printBoard() {
         int width = cells.length;

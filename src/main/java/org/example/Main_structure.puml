@@ -94,6 +94,8 @@ subgraph cluster_1322970774 {
 <TR><TD ALIGN="LEFT" >(C)Animal</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   symbol: char [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(board: Board)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -118,20 +120,10 @@ Board1526836320[
 <TR><TD ALIGN="LEFT" >-   animals: List&lt;Animal&gt; [0..*]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   cells: char[][] [0..*]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >- isValidPosition(x: int, y: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isValidPosition(x: int, y: int): boolean</TD></TR>
 <TR><TD ALIGN="LEFT" >+ placeAnimal(animal: Animal)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ printBoard()</TD></TR>
 <TR><TD ALIGN="LEFT" >+ updateBoard()</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-
-Cheetah1526836320[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Cheetah</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -153,7 +145,18 @@ Hunter1526836320[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)Hunter</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+   hunger: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >- calculateDistance(x1: int, y1: int, x2: int, y2: int): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ move(board: Board)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Hyena1526836320[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Hyena</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -176,7 +179,6 @@ Main1526836320[
 <TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
-<TR><TD ALIGN="LEFT" >+ toFile()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -187,6 +189,8 @@ Main1526836320[
 Prey1526836320[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)Prey</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ move(board: Board)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -223,10 +227,14 @@ Animal1526836320 -> Hunter1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Animal1526836320 -> Prey1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Board1526836320 -> Animal1526836320[label="animals
 [0..*]"];
-Hunter1526836320 -> Cheetah1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Hunter1526836320 -> Board1526836320[label="move() -> isValidPosition()"];
+Hunter1526836320 -> Hyena1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Hunter1526836320 -> Lion1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Main1526836320 -> Hunter1526836320[label="main() -> move()"];
+Main1526836320 -> Prey1526836320[label="main() -> move()"];
 Main1526836320 -> SimElement1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Prey1526836320 -> Antelope1526836320[arrowhead=none, arrowtail=empty, dir=both];
+Prey1526836320 -> Board1526836320[label="move() -> isValidPosition()"];
 Prey1526836320 -> Zebra1526836320[arrowhead=none, arrowtail=empty, dir=both];
 SimElement1526836320 -> Animal1526836320[arrowhead=none, arrowtail=empty, dir=both];
 SimElement1526836320 -> Food1526836320[arrowhead=none, arrowtail=empty, dir=both];

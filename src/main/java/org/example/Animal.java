@@ -3,8 +3,8 @@ package org.example;
 public abstract class Animal extends SimElement {
     private char symbol;
 
-    public Animal(int row, int col, char symbol) {
-        super(row, col);
+    public Animal(int x, int y, char symbol) {
+        super(x, y);
         this.symbol = symbol;
     }
 

@@ -36,7 +36,7 @@ public class Hunter extends Animal {
             int dy = Integer.compare(preyY, currentY);
 
             // Ograniczenie ruchu do maksymalnie 3 miejsc
-            int maxMovement = 3;
+            int maxMovement = 2;
             dx = Math.max(-maxMovement, Math.min(maxMovement, dx));
             dy = Math.max(-maxMovement, Math.min(maxMovement, dy));
 
