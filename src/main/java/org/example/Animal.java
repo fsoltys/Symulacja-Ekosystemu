@@ -3,8 +3,8 @@ package org.example;
 public abstract class Animal extends SimElement {
     private char symbol;
 
-    public Animal(int row, int col, char symbol) {
-        super(row, col);
+    public Animal(int x, int y, char symbol) {
+        super(x, y);
         this.symbol = symbol;
     }
 
@@ -12,5 +12,18 @@ public abstract class Animal extends SimElement {
         return symbol;
     }
 
+
     public abstract void move(Board board);
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Animal other = (Animal) obj;
+        return getX() == other.getX() && getY() == other.getY();
+    }
 }
