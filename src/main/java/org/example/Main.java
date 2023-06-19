@@ -7,6 +7,7 @@ public class Main {
         Board board = new Board(10, 10);
 
         // Tworzenie obiektów zwierząt
+
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
             int x = random.nextInt(10);
@@ -30,6 +31,7 @@ public class Main {
         x = random.nextInt(10);
         y = random.nextInt(10);
         Hunter lion = new Lion(x, y, 'L');
+
         board.placeAnimal(lion);
 
         // Przed ruchem
