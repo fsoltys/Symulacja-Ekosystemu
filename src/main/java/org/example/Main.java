@@ -1,52 +1,61 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Board board = new Board(10, 10);
 
         // Tworzenie obiektów zwierząt
-        Prey antelope = new Antelope(3, 4, 'A');
-        Prey zebra = new Zebra(5, 6, 'Z');
-        Hunter jackal = new Jackal(7, 8, 'J');
-        Hunter lion = new Lion(9, 9, 'L');
 
-        // Umieszczanie zwierząt na planszy
-        board.placeAnimal(antelope);
-        board.placeAnimal(zebra);
-        board.placeAnimal(jackal);
+        Random random = new Random();
+        for (int i = 0; i < 5; i++) {
+            int x = random.nextInt(10);
+            int y = random.nextInt(10);
+            Prey antelope = new Antelope(x, y, 'A');
+            board.placeAnimal(antelope);
+        }
+
+        for (int i = 0; i < 5; i++) {
+            int x = random.nextInt(10);
+            int y = random.nextInt(10);
+            Prey zebra = new Zebra(x, y, 'Z');
+            board.placeAnimal(zebra);
+        }
+
+        int x = random.nextInt(10);
+        int y = random.nextInt(10);
+        Hunter hyena = new Hyena(x, y, 'H');
+        board.placeAnimal(hyena);
+
+        x = random.nextInt(10);
+        y = random.nextInt(10);
+        Hunter lion = new Lion(x, y, 'L');
+
         board.placeAnimal(lion);
 
         // Przed ruchem
         System.out.println("Plansza przed ruchem:");
         board.printBoard();
-
-        // Metoda move() dla wszystkich zwierząt
-        List<Animal> animals = board.getAnimals();
-        for (Animal animal : animals) {
-            if (animal instanceof Prey) {
-                Prey prey = (Prey) animal;
-                prey.move(board);
-            } else if (animal instanceof Hunter) {
-                Hunter hunter = (Hunter) animal;
-                hunter.move(board);
+        int i = 0;
+        while (i < 20) {
+            for (Animal animal : board.getAnimals()) {
+                animal.move(board);
             }
+            board.updateBoard();
+            System.out.println("\n");
+            board.printBoard();
+            i++;
         }
-
-        // Aktualizacja
-        board.updateBoard();
-
+        int preyPopulation = 0;
+        int hunterPopulation = 0;
+        for(Animal animal: board.getAnimals()){
+           if(animal instanceof Prey){preyPopulation++;}
+           if(animal instanceof Hunter){hunterPopulation++;}
+        }
         // Po ruchu
-        System.out.println("Plansza po ruchu:");
         board.printBoard();
+        System.out.println("Plansza po ruchu:");
+        System.out.printf("Populacja po ruchu\nDrapiezniki: %d\nOfiary: %d", hunterPopulation, preyPopulation);
     }
-
-        public static void toFile(){
-
-    }
-
 }

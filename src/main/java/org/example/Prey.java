@@ -23,4 +23,11 @@ public abstract class Prey extends Animal {
             setY(newY);
         }
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+        return true;
+    }
 }
