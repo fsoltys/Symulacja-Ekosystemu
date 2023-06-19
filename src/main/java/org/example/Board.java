@@ -1,10 +1,10 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Board {
     private char[][] cells;
@@ -16,9 +16,7 @@ public class Board {
 
         // Initialize all cells with empty value
         for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                cells[i][j] = 'O';
-            }
+            Arrays.fill(cells[i], 'O');
         }
     }
 
@@ -49,10 +47,8 @@ public class Board {
     // Method to update the board state
     public void updateBoard() {
         // Clear the board
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
-                cells[i][j] = 'O';
-            }
+        for (char[] cell : cells) {
+            Arrays.fill(cell, 'O');
         }
 
         // Update the board with animal positions
@@ -96,6 +92,7 @@ public class Board {
 
     // Method to print the board
     public void printBoard() {
+
         int width = cells.length;
         int height = cells[0].length;
 
@@ -105,6 +102,25 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public void BoardSleep(){
+        long sleeptime = 2000;
+        try {
+            Thread.sleep(sleeptime);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clearScreen(){
+        //Clears Screen in java
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
     }
 
     // Method to save the simulation result to a CSV file

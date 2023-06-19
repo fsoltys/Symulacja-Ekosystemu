@@ -2,7 +2,7 @@ package org.example;
 
 public class SimElement extends Main {
     private int x, y;
-    public SimElement(){}
+
     public SimElement(int row, int column){
         x = row;
         y = column;

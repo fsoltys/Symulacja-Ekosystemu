@@ -33,16 +33,20 @@ public class Main {
         board.placeAnimal(lion);
 
         // Przed ruchem
+        board.clearScreen();
         System.out.println("Plansza przed ruchem:");
         board.printBoard();
+        board.BoardSleep();
+        board.clearScreen();
         int i = 0;
         while (i < 20) {
             for (Animal animal : board.getAnimals()) {
                 animal.move(board);
             }
             board.updateBoard();
-            System.out.println("\n");
             board.printBoard();
+            board.BoardSleep();
+            board.clearScreen();
             i++;
         }
         int preyPopulation = 0;

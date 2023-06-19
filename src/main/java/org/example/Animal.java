@@ -1,7 +1,7 @@
 package org.example;
 
 public abstract class Animal extends SimElement {
-    private char symbol;
+    private final char symbol;
 
     public Animal(int x, int y, char symbol) {
         super(x, y);

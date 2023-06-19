@@ -1,6 +1,5 @@
 package org.example;
 import java.util.List;
-import java.util.Random;
 
 public class Hunter extends Animal {
     public Hunter(int row, int col, char symbol) {
