@@ -3,6 +3,8 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Board {
     private char[][] cells;
@@ -65,19 +67,21 @@ public class Board {
 
         // Process hunter-prey interactions
 
-        for (int i = 0; i< animals.size(); ++i) {
+        for (int i = 0; i < animals.size(); ++i) {
             Animal animal = animals.get(i);
             int x = animal.getX();
             int y = animal.getY();
 
             if (animal instanceof Hunter) {
                 // Check if there is a prey at the same coordinates
-                for (int j = 0; j<animals.size(); ++j) {
+                for (int j = 0; j < animals.size(); ++j) {
                     Animal otherAnimal = animals.get(j);
                     if (otherAnimal != animal && otherAnimal instanceof Prey && otherAnimal.getX() == x && otherAnimal.getY() == y) {
                         // Hunter eats the prey
                         animals.remove(otherAnimal);
-                        if(i > j){i--;}
+                        if (i > j) {
+                            i--;
+                        }
                         cells[x][y] = animal.getSymbol();
                         System.out.println("Hunter ate the prey at (" + x + ", " + y + ")");
                         j--;
@@ -88,6 +92,8 @@ public class Board {
             }
         }
     }
+
+
     // Method to print the board
     public void printBoard() {
         int width = cells.length;
@@ -100,4 +106,28 @@ public class Board {
             System.out.println();
         }
     }
+
+    // Method to save the simulation result to a CSV file
+    public void saveSimulationResult(String fileName) {
+        try (FileWriter writer = new FileWriter(fileName)) {
+
+            // Write the column headers to the file
+            writer.write("X, Y, Symbol\n");
+
+            // Save animal positions and symbols to a file
+            for (Animal animal : animals) {
+                int x = animal.getX();
+                int y = animal.getY();
+                char symbol = animal.getSymbol();
+
+                writer.write(x + "," + y + "," + symbol + "\n");
+            }
+
+            System.out.println("Simulation result saved to " + fileName);
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving the simulation result.");
+            e.printStackTrace();
+        }
+    }
 }
+

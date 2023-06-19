@@ -1,0 +1,80 @@
+@startuml
+title Animal Simulation Activity Diagram
+
+
+class SimElement {
+  - x: int
+  - y: int
+  + SimElement()
+  + SimElement(row: int, column: int)
+  + setX(x: int): void
+  + setY(y: int): void
+  + getX(): int
+  + getY(): int
+}
+
+abstract class Animal {
+  - symbol: char
+  + Animal(x: int, y: int, symbol: char)
+  + getSymbol(): char
+  + equals(obj: Object): boolean
+  + move(board: Board): void
+}
+
+abstract class Prey {
+  + Prey(x: int, y: int, symbol: char)
+  + move(board: Board): void
+  + equals(obj: Object): boolean
+}
+
+class Antelope {
+  + Antelope(x: int, y: int, symbol: char)
+}
+
+class Zebra {
+  + Zebra(x: int, y: int, symbol: char)
+}
+
+class Hunter {
+  + Hunter(x: int, y: int, symbol: char)
+  + move(board: Board): void
+  - calculateDistance(x1: int, y1: int, x2: int, y2: int): double
+}
+
+class Hyena {
+  + Hyena(x: int, y: int, symbol: char)
+}
+
+class Lion {
+  + Lion(x: int, y: int, symbol: char)
+}
+
+class Board {
+  - cells: char[][]
+  - animals: List<Animal>
+  + Board(width: int, height: int)
+  + placeAnimal(animal: Animal): void
+  + isValidPosition(x: int, y: int): boolean
+  + getAnimals(): List<Animal>
+  + updateBoard(): void
+  + printBoard(): void
+}
+
+class Main {
+  + main(args: String[]): void
+}
+
+SimElement "1" --|> "1" Main
+
+Animal "1"--|> "1" SimElement
+Prey "1"--|> "1" Animal
+Antelope --|> Prey
+Zebra --|> Prey
+
+Hunter "1"--|> "1" Animal
+Hyena --|> Hunter
+Lion --|> Hunter
+
+Board "1"--* "1" Animal
+
+@enduml
