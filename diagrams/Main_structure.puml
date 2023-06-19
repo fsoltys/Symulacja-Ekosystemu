@@ -134,7 +134,6 @@ Board1526836320[
 Food1526836320[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)Food</TD></TR>
-
 </TABLE>>
 	style=filled
 	margin=0
@@ -228,10 +227,8 @@ Animal1526836320 -> Hunter1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Animal1526836320 -> Prey1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Board1526836320 -> Animal1526836320[label="animals
 [0..*]"];
-
 Hunter1526836320 -> Board1526836320[label="move() -> isValidPosition()"];
 Hunter1526836320 -> Hyena1526836320[arrowhead=none, arrowtail=empty, dir=both];
-
 Hunter1526836320 -> Lion1526836320[arrowhead=none, arrowtail=empty, dir=both];
 Main1526836320 -> Hunter1526836320[label="main() -> move()"];
 Main1526836320 -> Prey1526836320[label="main() -> move()"];

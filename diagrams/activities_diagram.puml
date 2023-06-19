@@ -1,0 +1,20 @@
+@startuml
+title Animal Simulation Activity Diagram
+
+start
+:User interacts with the system;
+:User creates a board;
+:User creates antelopes;
+:User creates zebras;
+:User creates hyenas;
+:User creates lions;
+:User places animals on the board;
+:User initiates the simulation;
+repeat
+    :Animals move;
+    :Board is updated;
+    :Print the current board state;
+repeat while (Simulation not complete)
+:Simulation complete;
+stop
+@enduml
